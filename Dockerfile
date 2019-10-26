@@ -20,3 +20,4 @@ COPY . .
 
 ENV CONDUIT_SECRET='something-really-secret'
 ENTRYPOINT [ "./scripts/entrypoint.sh" ]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5050"]

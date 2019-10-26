@@ -1,0 +1,12 @@
+version: "2.4"
+
+services:
+  app:
+    build: .
+    image: brotich/flask-test:latest
+    ports:
+      - "5050:5050"
+    environment:
+      - PORT=5050
+      - FLASK_APP=autoapp.py
+      - FLASK_DEBUG=1
