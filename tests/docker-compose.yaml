@@ -1,0 +1,17 @@
+version: "2.4"
+
+services:
+  tests:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: brotich/flask-test:test
+    ports:
+      - "5050:5050"
+    environment:
+      - PORT=5050
+      - FLASK_APP=autoapp.py
+      - FLASK_DEBUG=1
+    command: flask test
+    volumes:
+      - ../:/app
