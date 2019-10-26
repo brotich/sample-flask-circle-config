@@ -14,4 +14,4 @@ services:
       - FLASK_DEBUG=1
     command: flask test
     volumes:
-      - ../:/app
+      - "../:/app"

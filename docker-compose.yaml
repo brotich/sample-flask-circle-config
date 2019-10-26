@@ -11,4 +11,4 @@ services:
       - FLASK_APP=autoapp.py
       - FLASK_DEBUG=1
     volumes:
-      - ./:/app
+      - "./:/app"
