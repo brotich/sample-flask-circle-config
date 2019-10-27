@@ -5,6 +5,7 @@ from glob import glob
 from subprocess import call
 
 import click
+
 from flask import current_app
 from flask.cli import with_appcontext
 from werkzeug.exceptions import MethodNotAllowed, NotFound
@@ -19,7 +20,16 @@ def test():
     """Run the tests."""
     import pytest
 
-    rv = pytest.main(args=[TEST_PATH, "--verbose", "--cov=conduit", "--cov-append"])
+    rv = pytest.main(
+        args=[
+            TEST_PATH,
+            "--verbose",
+            "--cov=conduit",
+            "--cov-append",
+            "--junitxml=test-reports/junit.xml",
+            " --cov-report=test-reports/html",
+        ]
+    )
     exit(rv)
 
 
