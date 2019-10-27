@@ -14,7 +14,10 @@ jobs:
           name: Build Image for Test
           command: |-
             docker-compose -f tests/docker-compose.yaml build
-
+      - run:
+          name: Run Tests
+          command: |-
+            docker-compose -f tests/docker-compose.yaml run tests
       - store_artifacts:
           path: test-reports
           destination: test-reports
