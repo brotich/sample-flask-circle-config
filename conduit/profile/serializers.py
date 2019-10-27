@@ -9,15 +9,15 @@ class ProfileSchema(Schema):
     image = fields.Url()
     following = fields.Boolean()
     # ugly hack.
-    profile = fields.Nested('self', exclude=('profile',), default=True, load_only=True)
+    profile = fields.Nested("self", exclude=("profile",), default=True, load_only=True)
 
     @pre_load
     def make_user(self, data, **kwargs):
-        return data['profile']
+        return data["profile"]
 
     @post_dump
     def dump_user(self, data, **kwargs):
-        return {'profile': data}
+        return {"profile": data}
 
     class Meta:
         strict = True

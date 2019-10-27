@@ -11,10 +11,10 @@ from conduit.profile.models import UserProfile
 from .models import User
 from .serializers import user_schema
 
-blueprint = Blueprint('user', __name__)
+blueprint = Blueprint("user", __name__)
 
 
-@blueprint.route('/api/users', methods=('POST',))
+@blueprint.route("/api/users", methods=("POST",))
 @use_kwargs(user_schema)
 @marshal_with(user_schema)
 def register_user(username, password, email, **kwargs):
@@ -27,7 +27,7 @@ def register_user(username, password, email, **kwargs):
     return userprofile.user
 
 
-@blueprint.route('/api/users/login', methods=('POST',))
+@blueprint.route("/api/users/login", methods=("POST",))
 @jwt_optional
 @use_kwargs(user_schema)
 @marshal_with(user_schema)
@@ -40,27 +40,27 @@ def login_user(email, password, **kwargs):
         raise InvalidUsage.user_not_found()
 
 
-@blueprint.route('/api/user', methods=('GET',))
+@blueprint.route("/api/user", methods=("GET",))
 @jwt_required
 @marshal_with(user_schema)
 def get_user():
     user = current_user
     # Not sure about this
-    user.token = request.headers.environ['HTTP_AUTHORIZATION'].split('Token ')[1]
+    user.token = request.headers.environ["HTTP_AUTHORIZATION"].split("Token ")[1]
     return current_user
 
 
-@blueprint.route('/api/user', methods=('PUT',))
+@blueprint.route("/api/user", methods=("PUT",))
 @jwt_required
 @use_kwargs(user_schema)
 @marshal_with(user_schema)
 def update_user(**kwargs):
     user = current_user
     # take in consideration the password
-    password = kwargs.pop('password', None)
+    password = kwargs.pop("password", None)
     if password:
         user.set_password(password)
-    if 'updated_at' in kwargs:
-        kwargs['updated_at'] = user.created_at.replace(tzinfo=None)
+    if "updated_at" in kwargs:
+        kwargs["updated_at"] = user.created_at.replace(tzinfo=None)
     user.update(**kwargs)
     return user

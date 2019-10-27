@@ -8,10 +8,10 @@ from conduit.exceptions import InvalidUsage
 from conduit.user.models import User
 from .serializers import profile_schema
 
-blueprint = Blueprint('profiles', __name__)
+blueprint = Blueprint("profiles", __name__)
 
 
-@blueprint.route('/api/profiles/<username>', methods=('GET',))
+@blueprint.route("/api/profiles/<username>", methods=("GET",))
 @jwt_optional
 @marshal_with(profile_schema)
 def get_profile(username):
@@ -21,7 +21,7 @@ def get_profile(username):
     return user.profile
 
 
-@blueprint.route('/api/profiles/<username>/follow', methods=('POST',))
+@blueprint.route("/api/profiles/<username>/follow", methods=("POST",))
 @jwt_required
 @marshal_with(profile_schema)
 def follow_user(username):
@@ -33,7 +33,7 @@ def follow_user(username):
     return user.profile
 
 
-@blueprint.route('/api/profiles/<username>/follow', methods=('DELETE',))
+@blueprint.route("/api/profiles/<username>/follow", methods=("DELETE",))
 @jwt_required
 @marshal_with(profile_schema)
 def unfollow_user(username):

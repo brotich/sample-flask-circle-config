@@ -8,7 +8,7 @@ from conduit.extensions import bcrypt
 
 class User(SurrogatePK, Model):
 
-    __tablename__ = 'users'
+    __tablename__ = "users"
     username = Column(db.String(80), unique=True, nullable=False)
     email = Column(db.String(100), unique=True, nullable=False)
     password = Column(db.Binary(128), nullable=True)
@@ -16,7 +16,7 @@ class User(SurrogatePK, Model):
     updated_at = Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
     bio = Column(db.String(300), nullable=True)
     image = Column(db.String(120), nullable=True)
-    token: str = ''
+    token: str = ""
 
     def __init__(self, username, email, password=None, **kwargs):
         """Create instance."""
@@ -36,4 +36,4 @@ class User(SurrogatePK, Model):
 
     def __repr__(self):
         """Represent instance as a unique string."""
-        return '<User({username!r})>'.format(username=self.username)
+        return "<User({username!r})>".format(username=self.username)

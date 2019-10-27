@@ -13,7 +13,7 @@ from conduit.profile.models import UserProfile
 from .factories import UserFactory
 
 
-@pytest.yield_fixture(scope='function')
+@pytest.yield_fixture(scope="function")
 def app():
     """An application for the tests."""
     _app = create_app(TestConfig)
@@ -29,13 +29,13 @@ def app():
     ctx.pop()
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope="function")
 def testapp(app):
     """A Webtest app."""
     return TestApp(app)
 
 
-@pytest.yield_fixture(scope='function')
+@pytest.yield_fixture(scope="function")
 def db(app):
     """A database for the tests."""
     _db.app = app
@@ -52,10 +52,12 @@ def db(app):
 @pytest.fixture
 def user(db):
     """A user for the tests."""
-    class User():
+
+    class User:
         def get(self):
-            muser = UserFactory(password='myprecious')
+            muser = UserFactory(password="myprecious")
             UserProfile(muser).save()
             db.session.commit()
             return muser
+
     return User()

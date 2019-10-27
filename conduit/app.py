@@ -14,7 +14,7 @@ def create_app(config_object=ProdConfig):
 
     :param config_object: The configuration object to use.
     """
-    app = Flask(__name__.split('.')[0])
+    app = Flask(__name__.split(".")[0])
     app.url_map.strict_slashes = False
     app.config.from_object(config_object)
     register_extensions(app)
@@ -36,7 +36,7 @@ def register_extensions(app):
 
 def register_blueprints(app):
     """Register Flask blueprints."""
-    origins = app.config.get('CORS_ORIGIN_WHITELIST', '*')
+    origins = app.config.get("CORS_ORIGIN_WHITELIST", "*")
     cors.init_app(user.views.blueprint, origins=origins)
     cors.init_app(profile.views.blueprint, origins=origins)
     cors.init_app(articles.views.blueprint, origins=origins)
@@ -47,7 +47,6 @@ def register_blueprints(app):
 
 
 def register_errorhandlers(app):
-
     def errorhandler(error):
         response = error.to_json()
         response.status_code = error.status_code
@@ -58,15 +57,16 @@ def register_errorhandlers(app):
 
 def register_shellcontext(app):
     """Register shell context objects."""
+
     def shell_context():
         """Shell context objects."""
         return {
-            'db': db,
-            'User': user.models.User,
-            'UserProfile': profile.models.UserProfile,
-            'Article': articles.models.Article,
-            'Tag': articles.models.Tags,
-            'Comment': articles.models.Comment,
+            "db": db,
+            "User": user.models.User,
+            "UserProfile": profile.models.UserProfile,
+            "Article": articles.models.Article,
+            "Tag": articles.models.Tags,
+            "Comment": articles.models.Comment,
         }
 
     app.shell_context_processor(shell_context)
