@@ -21,8 +21,8 @@ jobs:
       - store_test_results:
           path: test-reports
       - store_artifacts:
-          path: test-coverage/html
-          destination: test-coverage/html
+          path: test-coverages/html
+          destination: test-coverages/html
 
 workflows:
   version: 2
