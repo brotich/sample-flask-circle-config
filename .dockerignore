@@ -4,3 +4,4 @@
 dev.db
 coverage.xml
 test-reports
+htmlcov

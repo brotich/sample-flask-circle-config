@@ -27,7 +27,7 @@ def test():
             "--cov=conduit",
             "--cov-append",
             "--junitxml=test-reports/junit.xml",
-            " --cov-report=test-reports/html",
+            "--cov-report=html",
         ]
     )
     exit(rv)
