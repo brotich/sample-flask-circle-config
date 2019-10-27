@@ -1,3 +1,6 @@
+[run]
+include = conduit
+
 [report]
 exclude_lines =
     # Don't complain about missing debug-only code:
