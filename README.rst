@@ -5,7 +5,8 @@ Quickstart
 
 CircleCI build:
 
-.. image:: https://circleci.com/gh/gothinkster/flask-realworld-example-app.png
+.. image:: https://circleci.com/gh/brotich/sample-flask-circle-config.svg?style=svg
+    :target: https://circleci.com/gh/brotich/sample-flask-circle-config
 
 
 First, set your app's secret key as an environment variable. For example,
