@@ -1,0 +1,4 @@
+.git
+.circleci
+.pytest_cache
+dev.db
