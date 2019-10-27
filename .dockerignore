@@ -2,3 +2,4 @@
 .circleci
 .pytest_cache
 dev.db
+coverage.xml

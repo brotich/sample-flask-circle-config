@@ -17,9 +17,9 @@ TEST_PATH = os.path.join(PROJECT_ROOT, "tests")
 @click.command()
 def test():
     """Run the tests."""
-    import pytest, pytest_cov
+    import pytest
 
-    rv = pytest.main(args=[TEST_PATH, "--verbose", "--cov=conduit"], plugins=[pytest_cov])
+    rv = pytest.main(args=[TEST_PATH, "--verbose", "--cov=conduit", "--cov-append"])
     exit(rv)
 
 
